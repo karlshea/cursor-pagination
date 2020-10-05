@@ -311,7 +311,7 @@ class CursorPaginator extends AbstractPaginator implements Arrayable, ArrayAcces
      */
     protected function parseDateIdentifier($id): int
     {
-        return Carbon::parse($id)->timestamp;
+        return Carbon::parse($id)->getPreciseTimestamp(3);
     }
 
     /**

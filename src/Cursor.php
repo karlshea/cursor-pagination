@@ -2,6 +2,8 @@
 
 namespace Juampi92\CursorPagination;
 
+use Illuminate\Support\Carbon;
+
 class Cursor
 {
     protected $prev = null;
@@ -76,7 +78,7 @@ class Cursor
         $prev = $this->getPrevCursor();
 
         if ($this->date_identifier && is_numeric($prev)) {
-            return date('c', $prev);
+            return Carbon::createFromTimestampMs($prev)->toDateTimeLocalString('m');
         }
 
         return $prev;
@@ -90,7 +92,7 @@ class Cursor
         $next = $this->getNextCursor();
 
         if ($this->date_identifier && is_numeric($next)) {
-            return date('c', $next);
+            return Carbon::createFromTimestampMs($next)->toDateTimeLocalString('m');
         }
 
         return $next;
